@@ -1,7 +1,7 @@
 #set text(font: "Noto Serif JP")
 #let mixed(body) = {
   set text(weight: "extrabold")
-  show regex("[\p{scx:Han}\p{scx:Hira}\p{scx:Kana}]"): set text(font: "Noto Sans JP", weight: "bold")
+  set text(font: "Noto Sans JP", weight: "bold")
   body
 }
 
@@ -52,5 +52,20 @@
 
 
 == 課題2
+$
+  (partial^2 f(x))/(partial x^2) = (partial f'(x))/ (partial x)
+$
+$f'(x)$ に対する中央差分を用いて
+$
+  (partial f'(x))/ (partial x) = (f'(x + h) - f'(x - h)) / (2h)
+$
+$f'(x + h)$ に対して前方差分、$f'(x - h)$ に対して後方差分を用いると
+$
+  (f'(x + h) - f'(x - h)) / (2h) = ({f(x + 2h) - f(x)}slash 2h - {f(x) - f(x - 2h)}slash 2h) / (2h)
+$
+$2h$ を $h$ として置きなおすと
+$
+  (partial^2 f(x))/(partial x^2) = (f(x + h) - 2f(x) + f(x - h)) / h^2
+$
 
 == 課題3
