@@ -28,6 +28,8 @@
   caption: [誤差の比較],
 ) <figs:prob1-2-1>
 
+#pagebreak()
+
 (2)
 次に、ソースコード `src2.py` に基づいて厳密解と数値解の差をグリッド幅 $h$ の関数としてプロットすると @figs:prob1-2-2 のようになる。
 
@@ -68,5 +70,71 @@ $
   (partial^2 f(x))/(partial x^2) = (f(x + h) - 2f(x) + f(x - h)) / h^2
 $
 
-== 課題3
+#pagebreak()
 
+== 課題3
+(1)
+有限区間 $[0, 2pi]$ で考える。 
+$V(x) = 0$ として与式を書き下すと、一次元の時間に依存しないシュレディンガー方程式は
+$
+  -1/2(partial^2 psi(x))/(partial x^2) = E psi(x)
+$
+=== 厳密解
+一般解は
+$
+  psi(x) = A cos(k x) + B sin(k x)
+$
+で与えられる。
+与式に代入して
+$
+  1/2 k^2 = E space therefore k = plus.minus sqrt(2E)
+$
+境界条件 $psi(0)=psi(2pi)=0$ より
+$
+  psi(0) = A = 0 \
+  psi(2pi) = A cos(2pi k) + B sin(2pi k) = 0
+$
+したがって、非自明な解として
+$
+  sin (2pi k) = 0, space 2pi k = n pi \
+  k = n/2, space therefore E = n^2 / 8 space (n = 1, 2, 3, ...)
+$
+対応する波動関数は
+$
+  psi_n (x) = B sin((n x)/2)
+$
+
+規格化条件より
+$
+  B = 1 / sqrt(pi), space therefore psi_n (x) = 1 / sqrt(pi) sin((n x)/2)
+$
+
+=== 数値解
+有限差分法を用いると、与式は
+$
+  -1/2(psi(x + h) - 2 psi(x) + psi(x - h)) / h^2 = E psi(x)
+$
+ハミルトニアン行列 $H$ は
+$
+  H_(i, j) = -1/2 (delta_(i, j + 1) - 2 delta_(i, j) - 1/2 delta_(i, j - 1))/h^2
+$
+として
+$
+  H mat(psi(x_1); psi(x_2); dots.v; psi(x_N)) = E mat(psi(x_1); psi(x_2); dots.v; psi(x_N))
+$
+よって、行列 $H$ の 固有値 $E$ と固有ベクトル $psi$ を求めることで数値解を得ることができる。
+
+`src3.py`によって求めて、厳密解と共にプロットしたものが @figs:prob1-3 である。
+
+#figure(
+  image("figs/prob1-3.png", width: 50%),
+  caption: [厳密解と数値解の比較],
+) <figs:prob1-3>
+
+なぜか第二励起状態では符号が反転している。たぶんeigenvectorsの取り方が悪いのだと思う。
+
+固有値は次の出力を得た。
+```
+numerical: [0.12450139 0.49800435 1.1205052 ]
+analytical: [0.125, 0.5, 1.125]
+```
