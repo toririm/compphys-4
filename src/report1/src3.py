@@ -6,8 +6,8 @@ cwd = Path(__file__).parent
 
 N = 1001
 
-a = 0
-b = 2 * np.pi
+a = -np.pi
+b = np.pi
 
 
 def delta(i, j):
@@ -26,17 +26,13 @@ eigenvalues, eigenvectors = np.linalg.eigh(ham)
 
 print("numerical:", eigenvalues[:3])
 
-
-# Normalize and check the sign of the eigenvectors
+# normalize
 wf = eigenvectors / np.sqrt(h)
-# for i in range(N):
-#     sign = np.sign(wf[N // 2, i])
-#     if sign != 0.0:
-#         wf[:, i] *= sign
 
 
 def analytical_wf(i):
-    return np.sqrt(np.pi) * np.sin(i * x / 2.0)
+    fnc = np.sin if i % 2 == 0 else np.cos
+    return 1/np.sqrt(np.pi) * fnc(i * x / 2.0)
 
 def analytical_energy(i):
     return i**2 / 8.0

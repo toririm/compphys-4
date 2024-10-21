@@ -76,7 +76,7 @@ $
 == 課題3
 
 (1)
-メッシュ分割数 $N = 1001$、有限区間 $[0, 2pi]$ で考える。この場合、メッシュ幅 $h = 2pi slash (N - 1)$ である。ポテンシャル関数
+メッシュ分割数 $N = 1001$、有限区間 $[-pi, pi]$ で考える。この場合、メッシュ幅 $h = 2pi slash (N - 1)$ である。ポテンシャル関数
 $V(x) = 0$ として与式を書き下すと、一次元の時間に依存しないシュレディンガー方程式は
 $
   -1/2(partial^2 psi(x))/(partial x^2) = E psi(x)
@@ -91,24 +91,32 @@ $
 $
   1/2 k^2 = E space therefore k = plus.minus sqrt(2E)
 $
-境界条件 $psi(0)=psi(2pi)=0$ より
+境界条件 $psi(-pi)=psi(pi)=0$ より
 $
-  psi(0) = A = 0 \
-  psi(2pi) = A cos(2pi k) + B sin(2pi k) = 0
+  psi(-pi) &= A cos(-pi k) + B sin(-pi k) = 0 \
+  psi(pi) &= A cos(pi k) + B sin(pi k) = 0
 $
-したがって、非自明な解として
+したがって、非自明な解が存在するためには
 $
+  A B (sin(pi k) cos(-pi k) - cos(pi k) sin(-pi k)) = A B sin(2 pi k) = 0 \
   sin (2pi k) = 0, space 2pi k = n pi \
   k = n/2, space therefore E = n^2 / 8 space (n = 1, 2, 3, ...)
 $
 対応する波動関数は
 $
-  psi_n (x) = B sin((n x)/2)
+  psi_n (x) = A_n cos((n x)/2) + B_n sin((n x)/2)
 $
 
 規格化条件より
 $
-  B = 1 / sqrt(pi), space therefore psi_n (x) = 1 / sqrt(pi) sin((n x)/2)
+  integral_(-pi)^(pi) psi_n^2 (x) d x = 1
+$
+したがって
+$
+  psi_n (x) = cases(
+    1/sqrt(pi) cos((n x)/2) & (n "is odd") \
+    1/sqrt(pi) sin((n x)/2) & (n "is even")
+  )
 $
 
 === 数値解
@@ -132,8 +140,6 @@ $
   image("figs/prob1-3.png", width: 50%),
   caption: [厳密解と数値解の比較],
 ) <figs:prob1-3>
-
-なぜか第二励起状態では符号が反転している。たぶんeigenvectorsの取り方が悪いのだと思う。
 
 固有値は次の出力を得た。
 ```
