@@ -19,10 +19,22 @@ for i in range(1, N - 1):
 
 y_analytical = -np.sin(x)
 
+plt.title(r"$N = 1001, h = 6.28 \times 10^{-3}$")
+plt.plot(x, y_forward, label="Forward")
+plt.plot(x, y_backward, label="Backward")
+plt.plot(x, y_central, label="Central")
+plt.plot(x, y_analytical, label="Analytical")
+plt.xlabel("$x$")
+plt.ylabel("$y$")
+plt.legend()
+plt.savefig("figs/prob1-1.png")
+
+
 error_forward = np.abs(y_forward - y_analytical)
 error_backward = np.abs(y_backward - y_analytical)
 error_central = np.abs(y_central - y_analytical)
 
+plt.figure()
 plt.title(r"$N = 1001, h = 6.28 \times 10^{-3}$")
 plt.plot(x, error_forward, label="Forward")
 plt.plot(x, error_backward, label="Backward")
@@ -31,4 +43,4 @@ plt.xlabel("$x$")
 plt.ylabel("Error")
 plt.legend()
 
-plt.savefig("prob1-1.png")
+plt.savefig("figs/prob1-2-1.png")

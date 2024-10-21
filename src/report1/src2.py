@@ -48,7 +48,7 @@ plt.xlabel(r"$\ln h$")
 plt.ylabel(r"$\ln (\text{average residual})$")
 plt.legend()
 
-plt.savefig("prob1-2.png")
+plt.savefig("figs/prob1-2-2.png")
 
 
 def predict_residual_log(hs, residua):
@@ -75,6 +75,6 @@ logh_central = opt.root(
     lambda logh: pred_central_log(logh) - np.log10(1e-6), np.log10(hs[0])
 ).x[0]
 
-print(f"Forward: h = {np.exp(logh_forward)}, logh = {logh_forward}")
-print(f"Backward: h = {np.exp(logh_backward)}, logh = {logh_backward}")
-print(f"Central: h = {np.exp(logh_central)}, logh = {logh_central}")
+print(f"Forward: h = {10 ** logh_forward}, logh = {logh_forward}")
+print(f"Backward: h = {10 ** logh_backward}, logh = {logh_backward}")
+print(f"Central: h = {10 ** logh_central}, logh = {logh_central}")
