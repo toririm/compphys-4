@@ -32,10 +32,12 @@ wf = eigenvectors / np.sqrt(h)
 
 def analytical_wf(i):
     fnc = np.sin if i % 2 == 0 else np.cos
-    return 1/np.sqrt(np.pi) * fnc(i * x / 2.0)
+    return 1 / np.sqrt(np.pi) * fnc(i * x / 2.0)
+
 
 def analytical_energy(i):
     return i**2 / 8.0
+
 
 print("analytical:", [analytical_energy(i) for i in range(1, 4)])
 
@@ -55,10 +57,12 @@ plt.savefig(cwd / "figs" / "prob1-3.png")
 # numerical
 for i in range(3):
     for j in range(3):
-        print(f"N: overlap({i}, {j}):", np.dot(wf[:, i], wf[:, j])*h)
+        print(f"N: overlap({i}, {j}):", np.dot(wf[:, i], wf[:, j]) * h)
 
 # analytical
 for i in range(3):
     for j in range(3):
-        print(f"A: overlap({i}, {j}):", np.dot(analytical_wf(i + 1), analytical_wf(j + 1)) * h)
-
+        print(
+            f"A: overlap({i}, {j}):",
+            np.dot(analytical_wf(i + 1), analytical_wf(j + 1)) * h,
+        )
