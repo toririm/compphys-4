@@ -29,14 +29,14 @@ print("numerical:", eigenvalues[:3])
 
 # Normalize and check the sign of the eigenvectors
 wf = eigenvectors / np.sqrt(h)
-for i in range(N):
-    sign = np.sign(wf[N // 2, i])
-    if sign != 0.0:
-        wf[:, i] *= sign
+# for i in range(N):
+#     sign = np.sign(wf[N // 2, i])
+#     if sign != 0.0:
+#         wf[:, i] *= sign
 
 
 def analytical_wf(i):
-    return 1 / np.sqrt(np.pi) * np.sin(i * x / 2.0)
+    return np.sqrt(np.pi) * np.sin(i * x / 2.0)
 
 def analytical_energy(i):
     return i**2 / 8.0
@@ -55,3 +55,14 @@ plt.ylabel(r"$\psi$")
 plt.legend()
 
 plt.savefig(cwd / "figs" / "prob1-3.png")
+
+# numerical
+for i in range(3):
+    for j in range(3):
+        print(f"N: overlap({i}, {j}):", np.dot(wf[:, i], wf[:, j])*h)
+
+# analytical
+for i in range(3):
+    for j in range(3):
+        print(f"A: overlap({i}, {j}):", np.dot(analytical_wf(i + 1), analytical_wf(j + 1)) * h)
+

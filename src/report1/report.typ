@@ -14,7 +14,7 @@
 == 課題1
 
 (1) 
-ソースコード #link("https://google.com")[`src1.py`] に基づいてプロットすると @figs:prob1-1 のようになる。
+ソースコード #link("https://github.com/toririm/compphys-4/tree/main/src/report1/src1.py")[`src1.py`] に基づいてプロットすると @figs:prob1-1 のようになる。
 
 #figure(
   image("figs/prob1-1.png", width: 50%),
@@ -31,7 +31,8 @@
 #pagebreak()
 
 (2)
-次に、ソースコード `src2.py` に基づいて厳密解と数値解の差をグリッド幅 $h$ の関数としてプロットすると @figs:prob1-2-2 のようになる。
+次に、ソースコード #link("https://github.com/toririm/compphys-4/tree/main/src/report1/src2.py")[`src2.py`]
+に基づいて厳密解と数値解の差をグリッド幅 $h$ の関数としてプロットすると @figs:prob1-2-2 のようになる。
 
 #figure(
   image("figs/prob1-2-2.png", width: 50%),
@@ -73,6 +74,7 @@ $
 #pagebreak()
 
 == 課題3
+
 (1)
 メッシュ分割数 $N = 1001$、有限区間 $[0, 2pi]$ で考える。この場合、メッシュ幅 $h = 2pi slash (N - 1)$ である。ポテンシャル関数
 $V(x) = 0$ として与式を書き下すと、一次元の時間に依存しないシュレディンガー方程式は
@@ -124,7 +126,7 @@ $
 $
 よって、行列 $H$ の 固有値 $E$ と固有ベクトル $psi$ を求めることで数値解を得ることができる。
 
-`src3.py`によって求めて、厳密解と共にプロットしたものが @figs:prob1-3 である。
+#link("https://github.com/toririm/compphys-4/tree/main/src/report1/src3.py")[`src3.py`] によって求めて、厳密解と共にプロットしたものが @figs:prob1-3 である。
 
 #figure(
   image("figs/prob1-3.png", width: 50%),
@@ -140,4 +142,25 @@ analytical: [0.125, 0.5, 1.125]
 ```
 
 (2)
+直交性
+$
+  integral_0^(2pi) psi_m (x) psi_n (x) d x = delta_(m, n)
+$
+を確かめる。
 
+計算結果を @tab:prob1-3 に示す。
+
+#figure(
+  table(
+    columns: 2,
+    table.header([$m, n$], [integral]),
+    table.hline(),
+    [$1, 1$], [`1.0000000000000013`],
+    [$1, 2$], [`-1.4022782690712481e-15`],
+    [$1, 3$], [`6.160732358642283e-16`],
+    [$2, 2$], [`1.0`],
+    [$2, 3$], [`1.1333952581951525e-16`],
+    [$3, 3$], [`0.9999999999999998`]
+  ),
+  caption: [直交性の確認],
+) <tab:prob1-3>
