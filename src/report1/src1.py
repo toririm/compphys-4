@@ -1,6 +1,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from pathlib import Path
 
+cwd = Path(__file__).parent
 
 N = 1001
 
@@ -27,7 +29,7 @@ plt.plot(x, y_analytical, label="Analytical")
 plt.xlabel("$x$")
 plt.ylabel("$y$")
 plt.legend()
-plt.savefig("figs/prob1-1.png")
+plt.savefig(cwd / "figs" / "prob1-1.png")
 
 
 error_forward = np.abs(y_forward - y_analytical)
@@ -43,4 +45,4 @@ plt.xlabel("$x$")
 plt.ylabel("Error")
 plt.legend()
 
-plt.savefig("figs/prob1-2-1.png")
+plt.savefig(cwd / "figs" / "prob1-2-1.png")

@@ -14,17 +14,17 @@
 == 課題1
 
 (1) 
-ソースコード `src1.py` に基づいてプロットすると @figs:prob1-1 のようになる。
+ソースコード #link("https://google.com")[`src1.py`] に基づいてプロットすると @figs:prob1-1 のようになる。
 
 #figure(
-  image("../../figs/prob1-1.png", width: 50%),
+  image("figs/prob1-1.png", width: 50%),
   caption: [$cos x$ の様々な有限差分法での微分比較],
 ) <figs:prob1-1>
 
 これらの誤差のみを比較すると、@figs:prob1-2-1 のようになる。
 
 #figure(
-  image("../../figs/prob1-2-1.png", width: 50%),
+  image("figs/prob1-2-1.png", width: 50%),
   caption: [誤差の比較],
 ) <figs:prob1-2-1>
 
@@ -32,7 +32,7 @@
 次に、ソースコード `src2.py` に基づいて厳密解と数値解の差をグリッド幅 $h$ の関数としてプロットすると @figs:prob1-2-2 のようになる。
 
 #figure(
-  image("../../figs/prob1-2-2.png", width: 50%),
+  image("figs/prob1-2-2.png", width: 50%),
   caption: [厳密解と数値解の差],
 ) <figs:prob1-2-2>
 
@@ -69,3 +69,4 @@ $
 $
 
 == 課題3
+

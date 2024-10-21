@@ -1,6 +1,9 @@
 import numpy as np
 import scipy.optimize as opt
 from matplotlib import pyplot as plt
+from pathlib import Path
+
+cwd = Path(__file__).parent
 
 
 def avg_residual(N: int):
@@ -48,7 +51,7 @@ plt.xlabel(r"$\ln h$")
 plt.ylabel(r"$\ln (\text{average residual})$")
 plt.legend()
 
-plt.savefig("figs/prob1-2-2.png")
+plt.savefig(cwd / "figs" / "prob1-2-2.png")
 
 
 def predict_residual_log(hs, residua):
