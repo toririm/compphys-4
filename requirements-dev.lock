@@ -24,16 +24,24 @@ numpy==2.1.2
     # via compphys-4
     # via contourpy
     # via matplotlib
+    # via pandas
     # via scipy
 packaging==24.1
     # via matplotlib
+pandas==2.2.3
+    # via compphys-4
 pillow==11.0.0
     # via matplotlib
 pyparsing==3.2.0
     # via matplotlib
 python-dateutil==2.9.0.post0
     # via matplotlib
+    # via pandas
+pytz==2024.2
+    # via pandas
 scipy==1.14.1
     # via compphys-4
 six==1.16.0
     # via python-dateutil
+tzdata==2024.2
+    # via pandas
