@@ -37,4 +37,4 @@ print(f"R-squared: {r_value**2:.6f}")
 # 拡散係数 D = slope / 6 を計算
 print(f"Diffusion coefficient: {slope / 6:.6f}")
 
-plt.show()
+# plt.show()
